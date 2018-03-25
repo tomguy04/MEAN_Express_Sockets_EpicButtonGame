@@ -1,0 +1,26 @@
+
+Assignment: Epic Button Game
+
+For this assignment, build the app described in the mockup below using Express and sockets.  Your app should serve only a single view, index.ejs.  
+-Any time the epic button is pushed, the count should update on every user who is connected via sockets.  This should happen in real time.  
+-If a user clicks the reset button, the count should reset to 0 for every user as well!
+
+Think about the events the client will need to listen for and the events the server must listen for.  Map out the emitters and listeners you will need before you start coding.  Use a variable on the server to keep track of how many times the button has been clicked.  
+    
+    1 Have the server render views/index.ejs that has the Counter, epic button and reset button.
+    
+    2 The user either clicks epic or reset
+        2a The user clicks epic
+        1 The epic button click information is EMITTED to the server with the event name "epic_click"
+        2 The server listens for an event "epic_click" and when this event gets triggered, checks to see if a count exists yet, if it does, increment the count
+        3 Server emits "send count" and sends the count info back (I don't think we use session),
+        4 Client listens for "send_count" and displays the count info on the screen.
+        *If count does not exists, set count to 0 and emit Server emits count info via "send count" like in step 3.
+        
+        2b The user clicks reset
+        1 The reset button click information is EMITTED to the server with the event name "reset_click"
+        2 The server listens for an event "reset_click" and when this event gets triggered, it sets the count back to 0 
+        3 Server emits "send count" and sends the count info back (I don't think we use session),
+        4 Client listens for "send_count" and displays the count info on the screen.
+    
+   
